@@ -1,23 +1,14 @@
 #include "game.hpp"
-#include "arc_cpp/keybinds.hpp"
-#include "arc_cpp/sprite.hpp"
+#include <archeus.hpp>
 
 namespace game {
     Game::Game(){
         arc::config->load("res/config/game.config");
-        player = arc::Sprite("player", 0);
-
-        double *scale = arc::config->get<double>("scale");
-        player.scale(*scale);
-
-        ARC_Point center = {
-            .x = (arc::data->windowSize.x / 2) - (player.getBounds().w / 2),
-            .y = (arc::data->windowSize.y / 2) - (player.getBounds().h / 2)
-        };
-        player.setPos(center);
+        player = new Player();
     }
 
     Game::~Game(){
+        delete player;
     }
 
     void Game::update(){
@@ -25,12 +16,13 @@ namespace game {
     }
 
     void Game::render(){
-        player.render();
+        player->render();
     }
 
     void Game::movePlayer(){
         if(arc::keybinds.isInputState(arc::KEYBIND::UP, arc::INPUT_STATE::PRESSED)){
             //move player up here
+            
         }
 
         if(arc::keybinds.isInputState(arc::KEYBIND::DOWN, arc::INPUT_STATE::PRESSED)){

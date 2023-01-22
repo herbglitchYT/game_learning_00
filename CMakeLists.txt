@@ -45,6 +45,7 @@ add_executable(game
     src/main.cpp
 
     src/game/game.cpp
+    src/game/player.cpp
 
     ${ARC_C}
     ${ARC_CPP_OVERLAY}

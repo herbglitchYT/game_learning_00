@@ -1,4 +1,6 @@
+#pragma once
 #include <archeus.hpp>
+#include "player.hpp"
 
 namespace game {
     class Game : public arc::State {
@@ -12,6 +14,6 @@ namespace game {
         void movePlayer();
 
     private:
-        arc::Sprite player;
+        Player *player;
     };
 }
